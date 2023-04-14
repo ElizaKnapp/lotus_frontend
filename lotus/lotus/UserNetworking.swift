@@ -5,14 +5,9 @@
 //  Created by Eliza Knapp on 4/13/23.
 //
 
-import Foundation
+// this file contains all the posts to the express api
 
-//
-//  ContentView.swift
-//  Request
-//
-//  Created by Eliza Knapp on 4/11/23.
-//
+import Foundation
 
 import SwiftUI
 

@@ -11,6 +11,8 @@ import UIKit
 
 struct HomePage: View {
     @State public var home = true
+    @State public var login = false
+    @State public var createAccount = false
     
     var body: some View {
         if (home){
@@ -30,6 +32,7 @@ struct HomePage: View {
                     Button(action: {
                         print("button tapped")
                         home = false
+                        createAccount = true
                     }) {
                         Text("Join Now")
                             .padding()
@@ -37,12 +40,23 @@ struct HomePage: View {
                             .background(.white)
                             .foregroundColor(.black)
                     }
+                    Button(action: {
+                        home = false
+                        login = true
+                    }) {
+                        Text("")
+                    }
                     
                 }
                 .padding()
             }
         } else {
-            LoginPage()
+            if (login) {
+                // ACTUAL LOGIN PAGE
+            }
+            else if (createAccount) {
+                LoginPage()
+            }
         }
 
     }

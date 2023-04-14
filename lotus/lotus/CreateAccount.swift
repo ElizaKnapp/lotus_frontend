@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct LoginPage: View {
+struct CreateAccount: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
@@ -23,7 +23,6 @@ struct LoginPage: View {
     
     @StateObject var userNetworking = UserNetworking()
     
-    // database
     @StateObject var db = DBChecker()
     
     var body: some View {
@@ -88,6 +87,6 @@ struct LoginPage: View {
         }
 
     }
-
+    
     
 }
