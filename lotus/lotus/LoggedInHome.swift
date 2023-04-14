@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 struct LoggedInHome: View {
-    @State private var create_profile = false
+    @State private var create_profile = false    
     
     var body: some View {
         if (create_profile) {
