@@ -39,7 +39,14 @@ class DBChecker: ObservableObject {
             return ""
         }
         
-
-                
+    }
+    
+    func doesUserExist(username: String, password: String, users: [User]) -> Bool {
+        for user in users {
+            if (user.username == username && user.password == password) {
+                return true
+            }
+        }
+        return false
     }
 }

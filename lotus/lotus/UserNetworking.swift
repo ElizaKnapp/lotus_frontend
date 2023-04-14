@@ -23,8 +23,38 @@ class UserNetworking: ObservableObject {
     @Published var users: [User] = [] // view will update itself
     
     func fetch() {
-        print("running fetch")
         guard let url = URL(string: "http://localhost:5000/user") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
+            error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            // Convert to JSON
+            do {
+                let users = try JSONDecoder().decode([User].self, from: data)
+                DispatchQueue.main.async {
+                    self?.users = users
+                }
+            }
+            catch {
+                print(error)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func fetch_one(username: String) {
+        let url_string = "http://localhost:5000/user/byUsername/" + username
+        
+        guard let url = URL(string: url_string) else {
             return
         }
         

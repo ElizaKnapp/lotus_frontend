@@ -28,7 +28,6 @@ struct LoginPage: View {
     
     var body: some View {
         if (loggedIn) {
-            // TODO: SOMEHOW STORE THE INFO IN THE DB AND PASS IT TO LOGGED IN HOME
             LoggedInHome()
             
         } else if (login){
@@ -40,26 +39,20 @@ struct LoginPage: View {
                         TextField(text: $username, prompt: Text("Username")) {
                             Text("Username")
                         }
-                        TextField(text: $email, prompt: Text("Email")) {
-                            Text("Email")
-                        }
-                        Text("Please input a password with length greater than 8 characters")
                         SecureField(text: $password, prompt: Text("Password")) {
                             Text("Password")
                         }
-                        SecureField(text: $password2, prompt: Text("Confirm Password")) {
-                            Text("Confirm Password")
-                        }
                         // allow submission by clicking the button
                         Button(action:{
-                            message = db.validateUser(username: username, password: password, password2: password2, email: email, existing_users: userNetworking.users)
-                            
-                            if (message == "") {
-                                userNetworking.post(username: username, password: password, email: email)
+                            // THESE BELOW ACTIONS SHOULD BE DIF
+                            // check if username and password match
+                            userNetworking.fetch_one(username: username)
+                            if (db.doesUserExist(username: username, password: password, users: userNetworking.users)) {
                                 loggedIn = true
                             } else {
-                                print(message)
+                                message = "Please input a correct username and password"
                             }
+      
                         }) {
                             Text("Submit")
                         }

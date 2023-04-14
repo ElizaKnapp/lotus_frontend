@@ -44,7 +44,11 @@ struct HomePage: View {
                         home = false
                         login = true
                     }) {
-                        Text("")
+                        Text("Login In")
+                            .padding()
+                            .font(.system(size: 40))
+                            .background(.white)
+                            .foregroundColor(.black)
                     }
                     
                 }
@@ -52,10 +56,10 @@ struct HomePage: View {
             }
         } else {
             if (login) {
-                // ACTUAL LOGIN PAGE
+                LoginPage()
             }
             else if (createAccount) {
-                LoginPage()
+                CreateAccount()
             }
         }
 
