@@ -11,26 +11,24 @@ import UIKit
 
 struct CreateAccount: View {
     
-    @State private var username: String = ""
+    @Binding var username: String
     @State private var password: String = ""
     @State private var password2: String = ""
-    @State private var email: String = ""
+    @Binding var email: String
     
     @State private var message: String = "" // error message about whether the user creation was succeessful
     
-    @State public var login = true // whether the login site is shown (vs home)
-    @State public var loggedIn = false // whether the user is logged in (if logged in, move to the logged in home page)
+    @Binding var logged_in: Bool // whether the user is logged in (if logged in, move to the logged in home page)
     
     @StateObject var userNetworking = UserNetworking()
     
     @StateObject var db = DBChecker()
     
     var body: some View {
-        if (loggedIn) {
-            // TODO: SOMEHOW STORE THE INFO IN THE DB AND PASS IT TO LOGGED IN HOME
-            LoggedInHome()
+        if (logged_in) {
+            HomePage()
             
-        } else if (login){
+        } else {
             ZStack{
                 VStack{
                     // below will be my attempt at a form
@@ -55,7 +53,7 @@ struct CreateAccount: View {
                             
                             if (message == "") {
                                 userNetworking.post(username: username, password: password, email: email)
-                                loggedIn = true
+                                logged_in = true
                             } else {
                                 print(message)
                             }
@@ -63,17 +61,7 @@ struct CreateAccount: View {
                             Text("Submit")
                         }
                     }
-                
-                    Button(action: {
-                        print("button tapped")
-                        login = false // gets you back to home
-                    }) {
-                        Text("Back To Home")
-                            .padding()
-                            .font(.system(size: 40))
-                            .background(.white)
-                            .foregroundColor(.black)
-                    }
+
                 }
                 .onAppear {
                     userNetworking.fetch()
@@ -82,8 +70,6 @@ struct CreateAccount: View {
                 }
 
             }
-        } else {
-            HomePage()
         }
 
     }

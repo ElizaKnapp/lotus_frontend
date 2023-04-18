@@ -16,7 +16,6 @@
 		7036E8CB29E88ECA00F00D3C /* lotusUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8CA29E88ECA00F00D3C /* lotusUITestsLaunchTests.swift */; };
 		7036E8D829E890BA00F00D3C /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8D729E890BA00F00D3C /* HomePage.swift */; };
 		7036E8DA29E890CF00F00D3C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8D929E890CF00F00D3C /* LoginPage.swift */; };
-		7036E8DC29E890E200F00D3C /* LoggedInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8DB29E890E200F00D3C /* LoggedInHome.swift */; };
 		7036E8DE29E890F600F00D3C /* CreateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8DD29E890F600F00D3C /* CreateProfile.swift */; };
 		7036E8E029E8912300F00D3C /* UserNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8DF29E8912300F00D3C /* UserNetworking.swift */; };
 		7036E8E229E8EDB000F00D3C /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8E129E8EDB000F00D3C /* CreateAccount.swift */; };
@@ -53,7 +52,6 @@
 		7036E8CA29E88ECA00F00D3C /* lotusUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lotusUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7036E8D729E890BA00F00D3C /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		7036E8D929E890CF00F00D3C /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
-		7036E8DB29E890E200F00D3C /* LoggedInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInHome.swift; sourceTree = "<group>"; };
 		7036E8DD29E890F600F00D3C /* CreateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.swift; sourceTree = "<group>"; };
 		7036E8DF29E8912300F00D3C /* UserNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworking.swift; sourceTree = "<group>"; };
 		7036E8E129E8EDB000F00D3C /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				7036E8B329E88EC900F00D3C /* Preview Content */,
 				7036E8D729E890BA00F00D3C /* HomePage.swift */,
 				7036E8D929E890CF00F00D3C /* LoginPage.swift */,
-				7036E8DB29E890E200F00D3C /* LoggedInHome.swift */,
 				7036E8DD29E890F600F00D3C /* CreateProfile.swift */,
 				7036E8DF29E8912300F00D3C /* UserNetworking.swift */,
 				7036E8E129E8EDB000F00D3C /* CreateAccount.swift */,
@@ -284,7 +281,6 @@
 				7036E8B029E88EC800F00D3C /* ContentView.swift in Sources */,
 				7036E8D829E890BA00F00D3C /* HomePage.swift in Sources */,
 				7036E8AE29E88EC800F00D3C /* lotusApp.swift in Sources */,
-				7036E8DC29E890E200F00D3C /* LoggedInHome.swift in Sources */,
 				7036E8DE29E890F600F00D3C /* CreateProfile.swift in Sources */,
 				7036E8E229E8EDB000F00D3C /* CreateAccount.swift in Sources */,
 			);

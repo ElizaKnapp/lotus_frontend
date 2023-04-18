@@ -14,9 +14,13 @@ struct CreateProfile: View {
     @State private var last_name: String = ""
     @State private var birthday = Date.now
     @State private var gender: String = ""
+    @State private var profile_visibility: Bool = false
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+            
     var body: some View {
-        ZStack{
+        NavigationView {
+            ZStack{
                 VStack{
                     Text("Create a profile!")
                     Form {
@@ -32,10 +36,31 @@ struct CreateProfile: View {
                         Picker("Gender", selection: $gender) {
                             Text("Female")
                             Text("Male")
+                            Text("Non-binary")
+                            Text("Other")
+                            Text("Prefer not to say")
                         }
+                        Picker("Would you like your user information to be shown?", selection: $profile_visibility) {
+                            Text("Yes")
+                            Text("No")
+                        }
+                        .navigationBarItems(leading: Button(action : {
+                            // push the data to the database
+                            
+                            self.mode.wrappedValue.dismiss()
+                        }){
+                            Text("Save Data")
+                        })
+
                     }
+                
                 }
+
+            }
+
         }
+
+
         
     }
 }
