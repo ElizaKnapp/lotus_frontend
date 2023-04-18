@@ -20,6 +20,7 @@
 		7036E8E029E8912300F00D3C /* UserNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8DF29E8912300F00D3C /* UserNetworking.swift */; };
 		7036E8E229E8EDB000F00D3C /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8E129E8EDB000F00D3C /* CreateAccount.swift */; };
 		7036E8E429E8EDFC00F00D3C /* DBChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8E329E8EDFC00F00D3C /* DBChecker.swift */; };
+		7036E92029EEE7AF00F00D3C /* UserInfoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		7036E8DF29E8912300F00D3C /* UserNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworking.swift; sourceTree = "<group>"; };
 		7036E8E129E8EDB000F00D3C /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		7036E8E329E8EDFC00F00D3C /* DBChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBChecker.swift; sourceTree = "<group>"; };
+		7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoNetworking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				7036E8DF29E8912300F00D3C /* UserNetworking.swift */,
 				7036E8E129E8EDB000F00D3C /* CreateAccount.swift */,
 				7036E8E329E8EDFC00F00D3C /* DBChecker.swift */,
+				7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */,
 			);
 			path = lotus;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			files = (
 				7036E8E029E8912300F00D3C /* UserNetworking.swift in Sources */,
 				7036E8E429E8EDFC00F00D3C /* DBChecker.swift in Sources */,
+				7036E92029EEE7AF00F00D3C /* UserInfoNetworking.swift in Sources */,
 				7036E8DA29E890CF00F00D3C /* LoginPage.swift in Sources */,
 				7036E8B029E88EC800F00D3C /* ContentView.swift in Sources */,
 				7036E8D829E890BA00F00D3C /* HomePage.swift in Sources */,

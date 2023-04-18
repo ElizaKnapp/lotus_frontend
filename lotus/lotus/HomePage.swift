@@ -17,7 +17,7 @@ struct HomePage: View {
     @State public var username: String = ""
     @State public var email: String = ""
 
-    
+
     var body: some View {
         NavigationView {
             if (!logged_in){
@@ -58,7 +58,7 @@ struct HomePage: View {
                     VStack {
                         Text("Hi \(username)")
                         Text("Welcome Page and User Agreement")
-                        NavigationLink(destination: CreateProfile()){
+                        NavigationLink(destination: CreateProfile(username: $username)){
                             Text("Profile")
                                 .padding()
                                 .font(.system(size: 40))

@@ -12,12 +12,17 @@ import UIKit
 struct CreateProfile: View {
     @State private var first_name: String = ""
     @State private var last_name: String = ""
-    @State private var birthday = Date.now
+    @State private var birthday: Date = Date.now
+    @State private var string_birthday: String = ""
     @State private var gender: String = ""
     @State private var profile_visibility: Bool = false
+    @Binding var username: String
+    
+    // networking to add users and their info to the db
+    @StateObject var userInfoNetworking = UserInfoNetworking()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-            
+
     var body: some View {
         NavigationView {
             ZStack{
@@ -30,7 +35,7 @@ struct CreateProfile: View {
                         TextField(text: $last_name, prompt: Text("Last Name")) {
                             Text("Last Name")
                         }
-                        DatePicker(selection: $birthday, in: ...Date.now, displayedComponents: .date) {
+                        DatePicker(selection: $birthday, displayedComponents: .date) {
                                         Text("Birthday")
                         }
                         Picker("Gender", selection: $gender) {
@@ -46,6 +51,15 @@ struct CreateProfile: View {
                         }
                         .navigationBarItems(leading: Button(action : {
                             // push the data to the database
+                            
+                            // to format date and push to db
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "dd.MM.yyyy"
+                            
+                            
+                            string_birthday = dateFormatter.string(from: birthday)
+                            userInfoNetworking.post(username: username, first_name: first_name, last_name: last_name, birthday: string_birthday, gender: gender, profile_visibility: profile_visibility)
+                            print("posted item")
                             
                             self.mode.wrappedValue.dismiss()
                         }){
