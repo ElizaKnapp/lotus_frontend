@@ -56,8 +56,27 @@ struct HomePage: View {
                 ZStack {
                     Color("myPink").ignoresSafeArea()
                     VStack {
+                        HStack {
+                            Text("Groups")
+                                .padding()
+                                .font(.system(size: 20))
+                                .background(.white)
+                                .foregroundColor(.black)
+                            // eventually the two texts below will be the myfeed and mygroups buttons
+                            Text("My Feed")
+                                .padding()
+                                .font(.system(size: 20))
+                                .background(.white)
+                                .foregroundColor(.black)
+                            Text("My Groups")
+                                .padding()
+                                .font(.system(size: 20))
+                                .background(.white)
+                                .foregroundColor(.black)
+                        }
                         Text("Hi \(username)")
-                        Text("Welcome Page and User Agreement")
+                        Text("My Groups Page")
+                        // THE BELOW LINK will be to edit profile (LATER)
 //                        NavigationLink(destination: CreateProfile(username: $username)){
 //                            Text("Profile")
 //                                .padding()
@@ -72,7 +91,7 @@ struct HomePage: View {
                         }) {
                             Text("Log Out")
                                 .padding()
-                                .font(.system(size: 40))
+                                .font(.system(size: 20))
                                 .background(.white)
                                 .foregroundColor(.black)
                         }
