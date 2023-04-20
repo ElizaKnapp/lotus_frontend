@@ -58,13 +58,13 @@ struct HomePage: View {
                     VStack {
                         Text("Hi \(username)")
                         Text("Welcome Page and User Agreement")
-                        NavigationLink(destination: CreateProfile(username: $username)){
-                            Text("Profile")
-                                .padding()
-                                .font(.system(size: 40))
-                                .background(.white)
-                                .foregroundColor(.black)
-                        }
+//                        NavigationLink(destination: CreateProfile(username: $username)){
+//                            Text("Profile")
+//                                .padding()
+//                                .font(.system(size: 40))
+//                                .background(.white)
+//                                .foregroundColor(.black)
+//                        }
                         Button(action: {
                             logged_in = false
                             username = ""

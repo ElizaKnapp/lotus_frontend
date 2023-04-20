@@ -118,7 +118,7 @@ class UserNetworking: ObservableObject {
             
             // Convert to JSON
             do {
-                let users = try JSONDecoder().decode(User.self, from: data)
+                let users = try JSONDecoder().decode([User].self, from: data)
                 DispatchQueue.main.async {
                     print(users)
                 }

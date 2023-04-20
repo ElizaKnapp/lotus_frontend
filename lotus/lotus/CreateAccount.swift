@@ -20,13 +20,15 @@ struct CreateAccount: View {
     
     @Binding var logged_in: Bool // whether the user is logged in (if logged in, move to the logged in home page)
     
+    @State private var done: Bool = false
+    
     @StateObject var userNetworking = UserNetworking()
     
     @StateObject var db = DBChecker()
     
     var body: some View {
-        if (logged_in) {
-            HomePage()
+        if (done) {
+            CreateProfile(username: $username, logged_in: $logged_in)
             
         } else {
             ZStack{
@@ -53,7 +55,7 @@ struct CreateAccount: View {
                             
                             if (message == "") {
                                 userNetworking.post(username: username, password: password, email: email)
-                                logged_in = true
+                                done = true
                             } else {
                                 print(message)
                             }
