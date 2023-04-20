@@ -18,7 +18,7 @@ struct UserInfo: Hashable, Codable {
     let last_name: String
     let birthday: String
     let gender: String
-    let profile_visibility: Bool
+    let profile_visibility: String
 }
 
 
@@ -85,7 +85,7 @@ class UserInfoNetworking: ObservableObject {
         task.resume()
     }
     
-    func post(username: String, first_name: String, last_name: String, birthday: String, gender: String, profile_visibility: Bool) {
+    func post(username: String, first_name: String, last_name: String, birthday: String, gender: String, profile_visibility: String) {
         guard let url = URL(string: "http://localhost:5000/userInfo") else {
             return
         }
@@ -113,6 +113,7 @@ class UserInfoNetworking: ObservableObject {
           // convert parameters to Data and assign dictionary to httpBody of request
           request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
+            print("error below")
           print(error.localizedDescription)
           return
         }
@@ -126,12 +127,16 @@ class UserInfoNetworking: ObservableObject {
             
             // Convert to JSON
             do {
-                let users = try JSONDecoder().decode([UserInfo].self, from: data)
+                // error is in the line below
+                let users = try JSONDecoder().decode(UserInfo.self, from: data)
                 DispatchQueue.main.async {
                     print(users)
+                    print("^^ users")
                 }
+                
             }
             catch {
+                print("hello")
                 print(error)
             }
             

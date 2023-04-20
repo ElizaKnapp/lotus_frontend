@@ -15,7 +15,7 @@ struct CreateProfile: View {
     @State private var birthday: Date = Date.now
     @State private var string_birthday: String = ""
     @State private var gender: String = ""
-    @State private var profile_visibility: Bool = false
+    @State private var profile_visibility: String = ""
     @Binding var username: String
     
     // networking to add users and their info to the db
@@ -47,6 +47,7 @@ struct CreateProfile: View {
                         }
                         Picker("Would you like your user information to be shown?", selection: $profile_visibility) {
                             Text("Yes")
+                                
                             Text("No")
                         }
                         .navigationBarItems(leading: Button(action : {
@@ -58,8 +59,17 @@ struct CreateProfile: View {
                             
                             
                             string_birthday = dateFormatter.string(from: birthday)
+                            
+                            print(username)
+                            
                             userInfoNetworking.post(username: username, first_name: first_name, last_name: last_name, birthday: string_birthday, gender: gender, profile_visibility: profile_visibility)
-                            print("posted item")
+                            
+                            
+                            //should go to the main page/groups
+                            
+                            
+                            
+                            
                             
                             self.mode.wrappedValue.dismiss()
                         }){
@@ -69,6 +79,7 @@ struct CreateProfile: View {
                     }
                 
                 }
+
 
             }
 
