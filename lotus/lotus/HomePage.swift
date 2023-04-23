@@ -19,7 +19,7 @@ struct HomePage: View {
 
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
-
+    
     var body: some View {
         NavigationView {
             if (!logged_in){
@@ -94,7 +94,8 @@ struct HomePage: View {
                                         Text(group.name)
                                         Text("Members: " + group.num_members.codingKey.stringValue)
                                     }
-                                    NavigationLink(destination: LoginPage(username: $username, email: $email, logged_in: $logged_in)){
+                                    // somehow also pass the array of the users groups or smth
+                                    NavigationLink(destination: GroupInfo(group_name: group.name, info: group.about, num_members: group.num_members)){
                                         Text("More Info")
                                     }
                                 }
