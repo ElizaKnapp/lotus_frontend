@@ -17,6 +17,8 @@ struct HomePage: View {
     @State public var username: String = ""
     @State public var email: String = ""
 
+    // for the groups shown
+    @StateObject var groupNetworking = GroupNetworking()
 
     var body: some View {
         NavigationView {
@@ -76,6 +78,7 @@ struct HomePage: View {
                         }
                         Text("Hi \(username)")
                         Text("My Groups Page")
+                        
                         // THE BELOW LINK will be to edit profile (LATER)
 //                        NavigationLink(destination: CreateProfile(username: $username)){
 //                            Text("Profile")
@@ -84,6 +87,22 @@ struct HomePage: View {
 //                                .background(.white)
 //                                .foregroundColor(.black)
 //                        }
+                        List {
+                            ForEach(groupNetworking.groups, id: \.self) {group in
+                                HStack {
+                                    VStack {
+                                        Text(group.name)
+                                        Text("Members: " + group.num_members.codingKey.stringValue)
+                                    }
+                                    NavigationLink(destination: LoginPage(username: $username, email: $email, logged_in: $logged_in)){
+                                        Text("More Info")
+                                    }
+                                }
+                                
+                                
+                            }
+                        }
+
                         Button(action: {
                             logged_in = false
                             username = ""
@@ -96,6 +115,8 @@ struct HomePage: View {
                                 .foregroundColor(.black)
                         }
                     }
+                }.onAppear{
+                    groupNetworking.fetch()
                 }
                 
                 
