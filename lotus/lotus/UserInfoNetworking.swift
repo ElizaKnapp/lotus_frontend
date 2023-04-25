@@ -11,6 +11,22 @@ import Foundation
 
 import SwiftUI
 
+import Foundation
+extension Dictionary {
+       
+   var jsonData: Data? {
+      return try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted])
+   }
+       
+   func toJSONString() -> String? {
+      if let jsonData = jsonData {
+         let jsonString = String(data: jsonData, encoding: .utf8)
+         return jsonString
+      }
+      return nil
+   }
+}
+
 struct UserInfo: Hashable, Codable {
     let id: Int?
     let username: String
@@ -93,14 +109,21 @@ class UserInfoNetworking: ObservableObject {
         }
         
         let parameters: [String: Any] = [
-            "username": username,
-            "first_name": first_name,
-            "last_name": last_name,
-            "birthday": birthday,
-            "gender": gender,
-            "profile_visibility": profile_visibility
+//            "username": "username",
+//            "first_name": first_name,
+//            "last_name": last_name,
+//            "birthday": birthday,
+//            "gender": gender,
+//            "profile_visibility": profile_visibility
+            "username": "username",
+            "first_name": "first_name",
+            "last_name": "last_name",
+            "birthday": "birthday",
+            "gender": "gender",
+            "profile_visibility": "profile_visibility"
         ]
         print(parameters)
+        print (type(of: parameters))
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -111,7 +134,22 @@ class UserInfoNetworking: ObservableObject {
         
         do {
           // convert parameters to Data and assign dictionary to httpBody of request
+            print("****")
+            
+//            var a = parameters.toJSONString()
+//            var a = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+//            print(a)
+//            print(type(of: a))
+//            request.httpBody = try JSONSerialization.data(withJSONObject:parameters)
+            print("here")
+            var test = try JSONSerialization.data(withJSONObject: parameters)
+            print(test)
+            print(test.self)
+            print(type(of: test))
+            print(JSONSerialization.isValidJSONObject(test))
           request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            
+            
         } catch let error {
           print(error.localizedDescription)
           return
@@ -128,6 +166,9 @@ class UserInfoNetworking: ObservableObject {
             
             // Convert to JSON
             do {
+                print("******")
+                print(data)
+                print(type(of: data))
                 let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
                 DispatchQueue.main.async {
                     print(userInfos)

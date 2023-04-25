@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0582C7A31F6CFE3C55E1AAB3 /* Pods_lotus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDD37FA5F8A6D3D4602CFF1 /* Pods_lotus.framework */; };
+		16385EB79338BA59524FDDE9 /* Pods_lotusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB5AEB74E336504F86F8F54 /* Pods_lotusTests.framework */; };
+		6C4E13E849987B8EA05C6D91 /* Pods_lotus_lotusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168683BA25B634805182026C /* Pods_lotus_lotusUITests.framework */; };
 		7036E8AE29E88EC800F00D3C /* lotusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8AD29E88EC800F00D3C /* lotusApp.swift */; };
 		7036E8B029E88EC800F00D3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E8AF29E88EC800F00D3C /* ContentView.swift */; };
 		7036E8B229E88EC900F00D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7036E8B129E88EC900F00D3C /* Assets.xcassets */; };
@@ -43,6 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050F87C55CDBEB5ED290DF35 /* Pods-lotusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotusTests.debug.xcconfig"; path = "Target Support Files/Pods-lotusTests/Pods-lotusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0C70E175DD309035C7F279E6 /* Pods-lotus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotus.debug.xcconfig"; path = "Target Support Files/Pods-lotus/Pods-lotus.debug.xcconfig"; sourceTree = "<group>"; };
+		168683BA25B634805182026C /* Pods_lotus_lotusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lotus_lotusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AF9FE92C9884215346D7AAB /* Pods-lotusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotusTests.release.xcconfig"; path = "Target Support Files/Pods-lotusTests/Pods-lotusTests.release.xcconfig"; sourceTree = "<group>"; };
+		2A8A7C7CCEAAC5CF259D33FD /* Pods-lotus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotus.release.xcconfig"; path = "Target Support Files/Pods-lotus/Pods-lotus.release.xcconfig"; sourceTree = "<group>"; };
+		2CB5AEB74E336504F86F8F54 /* Pods_lotusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lotusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E66C24D6F09B47D5D1E590 /* Pods-lotus-lotusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotus-lotusUITests.release.xcconfig"; path = "Target Support Files/Pods-lotus-lotusUITests/Pods-lotus-lotusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6DDD37FA5F8A6D3D4602CFF1 /* Pods_lotus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lotus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F34ED06D89A8DD0E969FEAA /* Pods-lotus-lotusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lotus-lotusUITests.debug.xcconfig"; path = "Target Support Files/Pods-lotus-lotusUITests/Pods-lotus-lotusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7036E8AA29E88EC800F00D3C /* lotus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lotus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7036E8AD29E88EC800F00D3C /* lotusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lotusApp.swift; sourceTree = "<group>"; };
 		7036E8AF29E88EC800F00D3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0582C7A31F6CFE3C55E1AAB3 /* Pods_lotus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16385EB79338BA59524FDDE9 /* Pods_lotusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,12 +97,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4E13E849987B8EA05C6D91 /* Pods_lotus_lotusUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		215AEB7C8E8B5AF164A9FC94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C70E175DD309035C7F279E6 /* Pods-lotus.debug.xcconfig */,
+				2A8A7C7CCEAAC5CF259D33FD /* Pods-lotus.release.xcconfig */,
+				6F34ED06D89A8DD0E969FEAA /* Pods-lotus-lotusUITests.debug.xcconfig */,
+				44E66C24D6F09B47D5D1E590 /* Pods-lotus-lotusUITests.release.xcconfig */,
+				050F87C55CDBEB5ED290DF35 /* Pods-lotusTests.debug.xcconfig */,
+				1AF9FE92C9884215346D7AAB /* Pods-lotusTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7036E8A129E88EC800F00D3C = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +125,8 @@
 				7036E8BD29E88EC900F00D3C /* lotusTests */,
 				7036E8C729E88EC900F00D3C /* lotusUITests */,
 				7036E8AB29E88EC800F00D3C /* Products */,
+				215AEB7C8E8B5AF164A9FC94 /* Pods */,
+				BC41413614A97EA6BE098998 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +185,16 @@
 			path = lotusUITests;
 			sourceTree = "<group>";
 		};
+		BC41413614A97EA6BE098998 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DDD37FA5F8A6D3D4602CFF1 /* Pods_lotus.framework */,
+				168683BA25B634805182026C /* Pods_lotus_lotusUITests.framework */,
+				2CB5AEB74E336504F86F8F54 /* Pods_lotusTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7036E8CE29E88ECA00F00D3C /* Build configuration list for PBXNativeTarget "lotus" */;
 			buildPhases = (
+				5EEC4EFF80915DF85B1CF1F0 /* [CP] Check Pods Manifest.lock */,
 				7036E8A629E88EC800F00D3C /* Sources */,
 				7036E8A729E88EC800F00D3C /* Frameworks */,
 				7036E8A829E88EC800F00D3C /* Resources */,
+				D76EEBFB011821313D8365EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7036E8D129E88ECA00F00D3C /* Build configuration list for PBXNativeTarget "lotusTests" */;
 			buildPhases = (
+				B72BEA578D2EFF36D4B04D14 /* [CP] Check Pods Manifest.lock */,
 				7036E8B629E88EC900F00D3C /* Sources */,
 				7036E8B729E88EC900F00D3C /* Frameworks */,
 				7036E8B829E88EC900F00D3C /* Resources */,
@@ -196,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7036E8D429E88ECA00F00D3C /* Build configuration list for PBXNativeTarget "lotusUITests" */;
 			buildPhases = (
+				1021158B1FDB05FADB18EBAE /* [CP] Check Pods Manifest.lock */,
 				7036E8C029E88EC900F00D3C /* Sources */,
 				7036E8C129E88EC900F00D3C /* Frameworks */,
 				7036E8C229E88EC900F00D3C /* Resources */,
+				9BC74D1401585DFDD1E92A79 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,6 +324,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1021158B1FDB05FADB18EBAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lotus-lotusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EEC4EFF80915DF85B1CF1F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lotus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BC74D1401585DFDD1E92A79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lotus-lotusUITests/Pods-lotus-lotusUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lotus-lotusUITests/Pods-lotus-lotusUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lotus-lotusUITests/Pods-lotus-lotusUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B72BEA578D2EFF36D4B04D14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lotusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D76EEBFB011821313D8365EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lotus/Pods-lotus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lotus/Pods-lotus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lotus/Pods-lotus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7036E8A629E88EC800F00D3C /* Sources */ = {
@@ -447,6 +596,7 @@
 		};
 		7036E8CF29E88ECA00F00D3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C70E175DD309035C7F279E6 /* Pods-lotus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -475,6 +625,7 @@
 		};
 		7036E8D029E88ECA00F00D3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A8A7C7CCEAAC5CF259D33FD /* Pods-lotus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -503,6 +654,7 @@
 		};
 		7036E8D229E88ECA00F00D3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 050F87C55CDBEB5ED290DF35 /* Pods-lotusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -522,6 +674,7 @@
 		};
 		7036E8D329E88ECA00F00D3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AF9FE92C9884215346D7AAB /* Pods-lotusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -541,6 +694,7 @@
 		};
 		7036E8D529E88ECA00F00D3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F34ED06D89A8DD0E969FEAA /* Pods-lotus-lotusUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -558,6 +712,7 @@
 		};
 		7036E8D629E88ECA00F00D3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44E66C24D6F09B47D5D1E590 /* Pods-lotus-lotusUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
