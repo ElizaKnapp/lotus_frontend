@@ -26,6 +26,7 @@
 		7036E92029EEE7AF00F00D3C /* UserInfoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */; };
 		7090296329F1CF6300BD335E /* GroupNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7090296229F1CF6300BD335E /* GroupNetworking.swift */; };
 		7090296529F4B4C300BD335E /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7090296429F4B4C300BD335E /* GroupInfo.swift */; };
+		70EFA00229F86A7500DB3F0C /* PostNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFA00129F86A7500DB3F0C /* PostNetworking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoNetworking.swift; sourceTree = "<group>"; };
 		7090296229F1CF6300BD335E /* GroupNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNetworking.swift; sourceTree = "<group>"; };
 		7090296429F4B4C300BD335E /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
+		70EFA00129F86A7500DB3F0C /* PostNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +116,6 @@
 				050F87C55CDBEB5ED290DF35 /* Pods-lotusTests.debug.xcconfig */,
 				1AF9FE92C9884215346D7AAB /* Pods-lotusTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -155,6 +156,7 @@
 				7036E8E329E8EDFC00F00D3C /* DBChecker.swift */,
 				7036E91F29EEE7AF00F00D3C /* UserInfoNetworking.swift */,
 				7090296229F1CF6300BD335E /* GroupNetworking.swift */,
+				70EFA00129F86A7500DB3F0C /* PostNetworking.swift */,
 				7090296429F4B4C300BD335E /* GroupInfo.swift */,
 			);
 			path = lotus;
@@ -442,6 +444,7 @@
 				7090296329F1CF6300BD335E /* GroupNetworking.swift in Sources */,
 				7036E8D829E890BA00F00D3C /* HomePage.swift in Sources */,
 				7036E8AE29E88EC800F00D3C /* lotusApp.swift in Sources */,
+				70EFA00229F86A7500DB3F0C /* PostNetworking.swift in Sources */,
 				7036E8DE29E890F600F00D3C /* CreateProfile.swift in Sources */,
 				7036E8E229E8EDB000F00D3C /* CreateAccount.swift in Sources */,
 			);

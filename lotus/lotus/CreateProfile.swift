@@ -9,16 +9,21 @@ import Foundation
 import SwiftUI
 import UIKit
 
+import Alamofire
+
 struct CreateProfile: View {
     @State private var first_name: String = ""
     @State private var last_name: String = ""
     @State private var birthday: Date = Date.now
     @State private var string_birthday: String = ""
-    @State private var gender: String = ""
-    @State private var profile_visibility: String = ""
+    @State private var gender: String = "Female"
+    @State private var profile_visibility: String = "Yes"
     @Binding var username: String
     @Binding var logged_in: Bool
     @State private var user_agreement: Bool = false
+    
+    var prof_ops = ["Yes", "No"]
+    var gender_ops = ["Female", "Male", "Non-Binary", "Other", "Prefer no to say"]
     
     // networking to add users and their info to the db
     @StateObject var userInfoNetworking = UserInfoNetworking()
@@ -39,16 +44,14 @@ struct CreateProfile: View {
                                             Text("Birthday")
                             }
                             Picker("Gender", selection: $gender) {
-                                Text("Female")
-                                Text("Male")
-                                Text("Non-binary")
-                                Text("Other")
-                                Text("Prefer not to say")
+                                ForEach(gender_ops, id: \.self) {
+                                                    Text($0)
+                                                }
                             }
                             Picker("Would you like your user information to be shown?", selection: $profile_visibility) {
-                                Text("Yes")
-                                    
-                                Text("No")
+                                ForEach(prof_ops, id: \.self) {
+                                                    Text($0)
+                                                }
                             }
                             Button(action : {
                                 // push the data to the database
@@ -61,10 +64,9 @@ struct CreateProfile: View {
                                 
                                 string_birthday = dateFormatter.string(from: birthday)
                                 
-                                print(username)
-                                
-                                // this doesn't work!!!! BUT IT SHOULD I JUST CANT FIX IT
-                                // before posting, this should also have the db checker post an error message but that is for later
+            
+       
+                                // issue right now: not saving gender or profile visibility
                                 userInfoNetworking.post(username: username, first_name: first_name, last_name: last_name, birthday: string_birthday, gender: gender, profile_visibility: profile_visibility)
 
                                 

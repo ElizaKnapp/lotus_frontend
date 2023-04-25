@@ -8,8 +8,6 @@
 import SwiftUI
 import UIKit
 
-// import Alamofire
-
 struct ContentView: View {
     var body: some View {
         HomePage()

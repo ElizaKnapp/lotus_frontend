@@ -10,6 +10,8 @@ import SwiftUI
 struct GroupInfo: View {
     
     // use the database to get posts to show- search posts by group: group.name
+    @StateObject var postNetworking = PostNetworking()
+
     
     @State var group_name: String
     @State var info: String
@@ -17,7 +19,6 @@ struct GroupInfo: View {
     
     // state var to decide whether the person is in the group to decide which button to show
 
-    
     var body: some View {
         ZStack {
             VStack{
@@ -32,7 +33,23 @@ struct GroupInfo: View {
                 }
                 
                 Text("About this group: " + info)
+                
+                List {
+                    ForEach(postNetworking.posts, id: \.self) {post in
+                        VStack {
+                            Text(post.author)
+                            Text(post.title)
+                            Text(post.content)
+                        }
+                    
+                        
+                        
+                    }
+                }
             }
+        }.onAppear{
+            // fetch the posts
+            postNetworking.fetch_one(group: group_name)
         }
     }
 }

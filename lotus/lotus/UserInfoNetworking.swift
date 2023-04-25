@@ -104,23 +104,18 @@ class UserInfoNetworking: ObservableObject {
     }
     
     func post(username: String, first_name: String, last_name: String, birthday: String, gender: String, profile_visibility: String) {
-        guard let url = URL(string: "http://localhost:5000/userInfos") else {
+        guard let url = URL(string: "http://localhost:5000/userInfo") else {
             return
         }
-        
+                
         let parameters: [String: Any] = [
-//            "username": "username",
-//            "first_name": first_name,
-//            "last_name": last_name,
-//            "birthday": birthday,
-//            "gender": gender,
-//            "profile_visibility": profile_visibility
-            "username": "username",
-            "first_name": "first_name",
-            "last_name": "last_name",
-            "birthday": "birthday",
-            "gender": "gender",
-            "profile_visibility": "profile_visibility"
+            "username": username,
+            "first_name": first_name,
+            "last_name": last_name,
+            "birthday": birthday,
+            "gender": gender,
+            "profile_visibility": profile_visibility,
+            "groups": []
         ]
         print(parameters)
         print (type(of: parameters))
@@ -141,12 +136,12 @@ class UserInfoNetworking: ObservableObject {
 //            print(a)
 //            print(type(of: a))
 //            request.httpBody = try JSONSerialization.data(withJSONObject:parameters)
-            print("here")
+//            print("here")
             var test = try JSONSerialization.data(withJSONObject: parameters)
-            print(test)
-            print(test.self)
-            print(type(of: test))
-            print(JSONSerialization.isValidJSONObject(test))
+//            print(test)
+//            print(test.self)
+//            print(type(of: test))
+//            print(JSONSerialization.isValidJSONObject(test))
           request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             
             
@@ -162,22 +157,22 @@ class UserInfoNetworking: ObservableObject {
                 return
             }
             
-            print(data)
-            
+//            print(data)
+//
             // Convert to JSON
             do {
-                print("******")
-                print(data)
-                print(type(of: data))
+//                print("******")
+//                print(data)
+//                print(type(of: data))
                 let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
                 DispatchQueue.main.async {
                     print(userInfos)
                 }
             }
             catch {
-                print("here: confused about why this doesn't work...")
-                print(UserInfo.self)
-                print(error)
+//                print("here: confused about why this doesn't work...")
+//                print(UserInfo.self)
+//                print(error)
             }
             
         }
