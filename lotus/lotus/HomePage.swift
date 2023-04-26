@@ -95,7 +95,8 @@ struct HomePage: View {
                                         Text("Members: " + group.num_members.codingKey.stringValue)
                                     }
                                     // somehow also pass the array of the users groups or smth
-                                    NavigationLink(destination: GroupInfo(group_name: group.name, info: group.about, num_members: group.num_members)){
+                                    // FIGURE OUT IF THE USER HAS JOINED THE GROUP AND PASS THAT IN
+                                    NavigationLink(destination: GroupInfo(group_name: group.name, info: group.about, num_members: group.num_members, joined: false)){
                                         Text("More Info")
                                     }
                                 }
