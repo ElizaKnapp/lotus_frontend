@@ -47,11 +47,10 @@ struct GroupInfo: View {
                         Text("Join Group")
                     }
                 } else {
-                    Button(action: {
-                        // do whatever create post does
-                    }) {
+                    NavigationLink(destination: CreatePost(author: username, group: group_name)) {
                         Text("Create Post")
                     }
+                  
                 }
                 
                 
@@ -97,5 +96,7 @@ struct GroupInfo: View {
             }
             
         }
+
     }
+    
 }

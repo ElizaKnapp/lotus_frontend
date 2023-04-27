@@ -59,22 +59,16 @@ struct CreateProfile: View {
                                 // to format date and push to db
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "dd.MM.yyyy"
-                                
-                                
-                                
+                      
                                 string_birthday = dateFormatter.string(from: birthday)
                                 
-            
-       
                                 // issue right now: not saving gender or profile visibility
                                 userInfoNetworking.post(username: username, first_name: first_name, last_name: last_name, birthday: string_birthday, gender: gender, profile_visibility: profile_visibility)
 
                                 
                                 //should go to the main page/groups
                                 user_agreement = true
-                                
-                                
-                                
+                           
                                 
                             }){
                                 Text("Save Data")
