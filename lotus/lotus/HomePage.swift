@@ -20,6 +20,10 @@ struct HomePage: View {
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
     
+    // testing, remove later
+    @StateObject var userInfoNetworking = UserInfoNetworking()
+
+    
     var body: some View {
         NavigationView {
             if (!logged_in){
@@ -49,6 +53,12 @@ struct HomePage: View {
                                 .font(.system(size: 40))
                                 .background(.white)
                                 .foregroundColor(.black)
+                        }
+                        Button(action: {
+                            // here goes the put testing information
+                            userInfoNetworking.put(username: "Eliza", group_name: "bob")
+                        }) {
+                            Text("testing")
                         }
                         
                     }

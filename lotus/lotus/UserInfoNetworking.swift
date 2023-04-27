@@ -129,19 +129,9 @@ class UserInfoNetworking: ObservableObject {
         
         do {
           // convert parameters to Data and assign dictionary to httpBody of request
-            print("****")
-            
-//            var a = parameters.toJSONString()
-//            var a = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-//            print(a)
-//            print(type(of: a))
-//            request.httpBody = try JSONSerialization.data(withJSONObject:parameters)
-//            print("here")
+
             var test = try JSONSerialization.data(withJSONObject: parameters)
-//            print(test)
-//            print(test.self)
-//            print(type(of: test))
-//            print(JSONSerialization.isValidJSONObject(test))
+
           request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             
             
@@ -156,23 +146,75 @@ class UserInfoNetworking: ObservableObject {
             else {
                 return
             }
-            
-//            print(data)
 //
             // Convert to JSON
             do {
-//                print("******")
-//                print(data)
-//                print(type(of: data))
+
                 let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
                 DispatchQueue.main.async {
                     print(userInfos)
                 }
             }
             catch {
-//                print("here: confused about why this doesn't work...")
-//                print(UserInfo.self)
-//                print(error)
+                print(error)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func put(username: String, group_name: String) {
+        let url_string = "http://localhost:5000/userInfo/byUsername/" + username
+
+        guard let url = URL(string: url_string) else {
+            return
+        }
+                
+        let parameters: [String: Any] = [
+            "groups": [
+                  "name": "endometriosis"
+              ]
+        ]
+        print(parameters)
+        print (type(of: parameters))
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        // add headers for the request
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do {
+          // convert parameters to Data and assign dictionary to httpBody of request
+
+            var test = try JSONSerialization.data(withJSONObject: parameters)
+
+          request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            
+            
+        } catch let error {
+          print(error.localizedDescription)
+          return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
+            error in
+            guard let data = data, error == nil
+            else {
+                return
+            }
+//
+            // Convert to JSON
+            do {
+
+                let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
+                DispatchQueue.main.async {
+                    print(userInfos)
+                }
+            }
+            catch {
+                print(error)
             }
             
         }
