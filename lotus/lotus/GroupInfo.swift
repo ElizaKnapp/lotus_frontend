@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct GroupInfo: View {
-    
-    // use the database to get posts to show- search posts by group: group.name
-    @StateObject var postNetworking = PostNetworking()
+
+    @State var username: String
 
     
     @State var group_name: String
     @State var info: String
     @State var num_members: Int
-    
+        
     // state var to decide whether the person is in the group to decide which button to show
     @State var joined: Bool // pass in whether the group is joined (discovered on HomePage)
+    
+    // networking
+    @StateObject var postNetworking = PostNetworking()
+    @StateObject var userInfoNetworking = UserInfoNetworking()
+    @StateObject var groupNetworking = GroupNetworking()
 
     var body: some View {
         ZStack {
@@ -29,6 +33,7 @@ struct GroupInfo: View {
                     Button(action: {
                         
                         // add to the user's groups joined in the database
+                        userInfoNetworking.put(username: "Eliza", group_name: group_name)
                         
                         // add to the number of members in a group
                         

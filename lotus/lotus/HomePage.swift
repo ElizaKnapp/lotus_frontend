@@ -19,9 +19,6 @@ struct HomePage: View {
 
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
-    
-    // testing, remove later
-    @StateObject var userInfoNetworking = UserInfoNetworking()
 
     
     var body: some View {
@@ -54,13 +51,12 @@ struct HomePage: View {
                                 .background(.white)
                                 .foregroundColor(.black)
                         }
-                        Button(action: {
-                            // here goes the put testing information
-                            userInfoNetworking.put(username: "Eliza", group_name: "bob")
-                        }) {
-                            Text("testing")
-                        }
-                        
+                        // THE FOLLOWING IS A TESTING BUTTON- REMOVE EVENTUALLY
+//                        Button(action:{
+//                            groupNetworking.patch(name: "endometriosis", num_members: 8)
+//                        }) {
+//                            Text("testing")
+//                        }
                     }
                     .padding()
                 }
@@ -106,7 +102,7 @@ struct HomePage: View {
                                     }
                                     // somehow also pass the array of the users groups or smth
                                     // FIGURE OUT IF THE USER HAS JOINED THE GROUP AND PASS THAT IN
-                                    NavigationLink(destination: GroupInfo(group_name: group.name, info: group.about, num_members: group.num_members, joined: false)){
+                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false)){
                                         Text("More Info")
                                     }
                                 }

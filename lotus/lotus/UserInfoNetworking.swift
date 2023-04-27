@@ -172,7 +172,7 @@ class UserInfoNetworking: ObservableObject {
                 
         let parameters: [String: Any] = [
             "groups": [
-                  "name": "endometriosis"
+                  "name": group_name
               ]
         ]
         print(parameters)
