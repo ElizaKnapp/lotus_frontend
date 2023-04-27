@@ -36,6 +36,8 @@ struct GroupInfo: View {
                         userInfoNetworking.put(username: "Eliza", group_name: group_name)
                         
                         // add to the number of members in a group
+                        num_members += 1
+                        groupNetworking.patch(name: group_name, num_members: num_members)
                         
                         // change
                         joined = true
