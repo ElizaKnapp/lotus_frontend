@@ -19,6 +19,8 @@ struct GroupInfo: View {
     // state var to decide whether the person is in the group to decide which button to show
     @State var joined: Bool // pass in whether the group is joined (discovered on HomePage)
     
+    @State var user_info: [UserInfo]
+    
     // networking
     @StateObject var postNetworking = PostNetworking()
     @StateObject var userInfoNetworking = UserInfoNetworking()
@@ -46,8 +48,15 @@ struct GroupInfo: View {
                     }
                 } else {
                     Button(action: {
+                        // PROBLEM IT CANT FETCH GROUPS FROM DB
+                        
                         // do whatever for post (probably a new scheme)
                         // POST CODE TO DO
+                        for item in user_info {
+                            print(item)
+                        }
+                        print(user_info)
+                        print("hi")
                     }) {
                         Text("Create Post")
                     }

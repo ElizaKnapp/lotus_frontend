@@ -35,6 +35,7 @@ struct UserInfo: Hashable, Codable {
     let birthday: String
     let gender: String
     let profile_visibility: String
+    let groups: [String]
 }
 
 
@@ -117,8 +118,6 @@ class UserInfoNetworking: ObservableObject {
             "profile_visibility": profile_visibility,
             "groups": []
         ]
-        print(parameters)
-        print (type(of: parameters))
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -175,8 +174,6 @@ class UserInfoNetworking: ObservableObject {
                   "name": group_name
               ]
         ]
-        print(parameters)
-        print (type(of: parameters))
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"

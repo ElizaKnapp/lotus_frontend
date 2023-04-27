@@ -19,6 +19,7 @@ struct HomePage: View {
 
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
+    @StateObject var userInfoNetworking = UserInfoNetworking()
 
     
     var body: some View {
@@ -102,13 +103,16 @@ struct HomePage: View {
                                     }
                                     // somehow also pass the array of the users groups or smth
                                     // FIGURE OUT IF THE USER HAS JOINED THE GROUP AND PASS THAT IN
-                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false)){
+                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false, user_info: userInfoNetworking.userInfos)){
                                         Text("More Info")
                                     }
                                 }
                                 
                                 
                             }
+                        }.onAppear{
+                            // query the db for list of groups
+                            userInfoNetworking.fetch_one(username: username)
                         }
 
                         Button(action: {

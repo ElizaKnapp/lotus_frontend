@@ -128,9 +128,10 @@ class GroupNetworking: ObservableObject {
             // Convert to JSON
             do {
 
-                let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
+                let groups = try JSONDecoder().decode([Group].self, from: data)
                 DispatchQueue.main.async {
-                    print(userInfos)
+                    print(groups)
+                    self?.groups = groups
                 }
             }
             catch {
