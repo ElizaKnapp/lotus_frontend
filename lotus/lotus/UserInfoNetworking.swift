@@ -35,7 +35,12 @@ struct UserInfo: Hashable, Codable {
     let birthday: String
     let gender: String
     let profile_visibility: String
-    let groups: [String]
+    let groups: [Group_Small]
+}
+
+struct Group_Small: Hashable, Codable {
+    let id: Int?
+    let name: String
 }
 
 
