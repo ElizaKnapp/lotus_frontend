@@ -33,7 +33,7 @@ struct GroupInfo: View {
                     Button(action: {
                         
                         // add to the user's groups joined in the database
-                        userInfoNetworking.put(username: "Eliza", group_name: group_name)
+                        userInfoNetworking.addPut(username: username, group_name: group_name)
                         
                         // add to the number of members in a group
                         num_members += 1
@@ -41,14 +41,13 @@ struct GroupInfo: View {
                         
                         // change
                         joined = true
-                        
-                        // if you are joined then show the post button
                     }) {
                         Text("Join Group")
                     }
                 } else {
                     Button(action: {
-                        // do whatever for post (probably a new scheme
+                        // do whatever for post (probably a new scheme)
+                        // POST CODE TO DO
                     }) {
                         Text("Create Post")
                     }
@@ -59,6 +58,12 @@ struct GroupInfo: View {
                 
                 if (joined) {
                     Button(action: {
+                        num_members -= 1
+                        groupNetworking.patch(name: group_name, num_members: num_members)
+                        
+                        // IMPORTANT- remove from the joined groups array
+                        userInfoNetworking.removePut(username: username, group_name: group_name)
+
                         // leave group
                         joined = false
                     }) {

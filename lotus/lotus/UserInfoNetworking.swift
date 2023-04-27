@@ -163,8 +163,66 @@ class UserInfoNetworking: ObservableObject {
         task.resume()
     }
     
-    func put(username: String, group_name: String) {
+    func addPut(username: String, group_name: String) {
         let url_string = "http://localhost:5000/userInfo/byUsername/" + username
+
+        guard let url = URL(string: url_string) else {
+            return
+        }
+                
+        let parameters: [String: Any] = [
+            "groups": [
+                  "name": group_name
+              ]
+        ]
+        print(parameters)
+        print (type(of: parameters))
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        // add headers for the request
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do {
+          // convert parameters to Data and assign dictionary to httpBody of request
+
+            var test = try JSONSerialization.data(withJSONObject: parameters)
+
+          request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            
+            
+        } catch let error {
+          print(error.localizedDescription)
+          return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
+            error in
+            guard let data = data, error == nil
+            else {
+                return
+            }
+//
+            // Convert to JSON
+            do {
+
+                let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
+                DispatchQueue.main.async {
+                    print(userInfos)
+                }
+            }
+            catch {
+                print(error)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func removePut(username: String, group_name: String) {
+        let url_string = "http://localhost:5000/userInfo/removeGroup/" + username
 
         guard let url = URL(string: url_string) else {
             return
