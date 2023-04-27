@@ -16,6 +16,7 @@ struct HomePage: View {
     // stuff to save to the home once the login stuff happens
     @State public var username: String = ""
     @State public var email: String = ""
+    @State public var groups: [String] = []
 
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
@@ -62,6 +63,7 @@ struct HomePage: View {
                     .padding()
                 }
             } else {
+                
                 ZStack {
                     Color("myPink").ignoresSafeArea()
                     VStack {
@@ -103,7 +105,7 @@ struct HomePage: View {
                                     }
                                     // somehow also pass the array of the users groups or smth
                                     // FIGURE OUT IF THE USER HAS JOINED THE GROUP AND PASS THAT IN
-                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false, user_info: userInfoNetworking.userInfos)){
+                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false, groups: groups)){
                                         Text("More Info")
                                     }
                                 }
@@ -111,14 +113,26 @@ struct HomePage: View {
                                 
                             }
                         }.onAppear{
+                            print(userInfoNetworking.userInfos)
                             // query the db for list of groups
                             userInfoNetworking.fetch_one(username: username)
+                            
+                            // BUG- THIS DOESN'T LOAD FAST ENOUGH??
+                            groups = []
+                            if (userInfoNetworking.userInfos != []) {
+                                for item in userInfoNetworking.userInfos[0].groups {
+                                    groups.append(item.name)
+                                }
+                            }
+                            
+                            print(groups)
                         }
 
                         Button(action: {
                             logged_in = false
                             username = ""
                             email = ""
+                            groups = []
                         }) {
                             Text("Log Out")
                                 .padding()

@@ -21,7 +21,7 @@ struct LoginPage: View {
     @Binding var logged_in: Bool // whether the user is logged in (if logged in, move to the logged in home page)
     
     @StateObject var userNetworking = UserNetworking()
-    
+        
     // database
     @StateObject var db = DBChecker()
     
@@ -48,6 +48,7 @@ struct LoginPage: View {
                             userNetworking.fetch_one(username: username)
                             if (db.doesUserExist(username: username, password: password, users: userNetworking.users)) {
                                 logged_in = true
+
                             } else {
                                 message = "Please input a correct username and password"
                             }
