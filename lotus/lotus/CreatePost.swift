@@ -12,8 +12,10 @@ struct CreatePost: View {
     @State private var content: String = ""
     @State var author: String
     @State var group: String
+    @State var string_time: String = ""
     
-    
+    @StateObject var postNetworking = PostNetworking()
+
     var body: some View {
         ZStack {
             VStack {
@@ -27,6 +29,13 @@ struct CreatePost: View {
                     }
                     Button(action: {
                         // push the post to the database
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd.MM.yyyy.HH.mm"
+              
+                        string_time = dateFormatter.string(from: Date.now)
+                        
+                        postNetworking.post(title: title, author: author, time: string_time, group: group, content: content)
+                        print("posted")
                     }) {
                         Text("Post!")
                     }

@@ -92,7 +92,6 @@ class UserNetworking: ObservableObject {
             "password": password,
             "email": email
         ]
-        print(parameters)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -102,13 +101,8 @@ class UserNetworking: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         do {
-            print("******here********")
             var test = try JSONSerialization.data(withJSONObject: parameters)
-            print(test)
-            print(test.self)
-            print(type(of: test))
-            print(JSONSerialization.isValidJSONObject(test))
-            
+       
           // convert parameters to Data and assign dictionary to httpBody of request
           request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
