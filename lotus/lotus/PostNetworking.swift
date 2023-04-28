@@ -32,7 +32,7 @@ class PostNetworking: ObservableObject {
     @Published var posts: [Post] = [] // view will update itself
     
     func fetch_one(group: String) {
-        let url_string = "http://localhost:5000/makePost/byGroup/" + group
+        let url_string = "http://localhost:5000/post/byGroup/" + group
         
         guard let url = URL(string: url_string) else {
             return
@@ -63,7 +63,7 @@ class PostNetworking: ObservableObject {
     }
     
     func post(title: String, author: String, time: String, group: String, content: String) {
-        guard let url = URL(string: "http://localhost:5000/makePost") else {
+        guard let url = URL(string: "http://localhost:5000/post") else {
             return
         }
         

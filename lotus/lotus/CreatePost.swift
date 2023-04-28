@@ -36,12 +36,17 @@ struct CreatePost: View {
                         
                         postNetworking.post(title: title, author: author, time: string_time, group: group, content: content)
                         print("posted")
+                        
+
                     }) {
                         Text("Post!")
                     }
+                    
                 }
             }
             
         }
+        
+        
     }
 }
