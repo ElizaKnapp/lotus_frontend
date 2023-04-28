@@ -11,22 +11,6 @@ import Foundation
 
 import SwiftUI
 
-import Foundation
-extension Dictionary {
-       
-   var jsonData: Data? {
-      return try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted])
-   }
-       
-   func toJSONString() -> String? {
-      if let jsonData = jsonData {
-         let jsonString = String(data: jsonData, encoding: .utf8)
-         return jsonString
-      }
-      return nil
-   }
-}
-
 struct UserInfo: Hashable, Codable {
     let id: Int?
     let username: String
@@ -160,6 +144,7 @@ class UserInfoNetworking: ObservableObject {
                 }
             }
             catch {
+                print("problem here userinfo")
                 print(error)
             }
             

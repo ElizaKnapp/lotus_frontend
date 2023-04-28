@@ -11,6 +11,7 @@ import Foundation
 
 import SwiftUI
 
+
 struct Post: Hashable, Codable {
     let id: Int?
     let title: String
@@ -31,7 +32,7 @@ class PostNetworking: ObservableObject {
     @Published var posts: [Post] = [] // view will update itself
     
     func fetch_one(group: String) {
-        let url_string = "http://localhost:5000/post/byGroup/" + group
+        let url_string = "http://localhost:5000/makePost/byGroup/" + group
         
         guard let url = URL(string: url_string) else {
             return
@@ -62,18 +63,19 @@ class PostNetworking: ObservableObject {
     }
     
     func post(title: String, author: String, time: String, group: String, content: String) {
-        guard let url = URL(string: "http://localhost:5000/post") else {
+        guard let url = URL(string: "http://localhost:5000/makePost") else {
             return
         }
         
         let parameters: [String: Any] = [
-            "title": "title",
+            "title": title,
             "author": "author",
             "time": "time",
             "group": "group",
             "content": "content",
             "tags": []
         ]
+        
         print(parameters)
         
         var request = URLRequest(url: url)
@@ -86,7 +88,7 @@ class PostNetworking: ObservableObject {
         do {
           // convert parameters to Data and assign dictionary to httpBody of request
 
-            try JSONSerialization.data(withJSONObject: parameters)
+            var test = try JSONSerialization.data(withJSONObject: parameters)
 
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             
@@ -112,6 +114,7 @@ class PostNetworking: ObservableObject {
                 }
             }
             catch {
+                print("problem here?")
                 print(error)
             }
             
