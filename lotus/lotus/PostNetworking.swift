@@ -69,10 +69,10 @@ class PostNetworking: ObservableObject {
         
         let parameters: [String: Any] = [
             "title": title,
-            "author": "author",
-            "time": "time",
-            "group": "group",
-            "content": "content",
+            "author": author,
+            "time": time,
+            "group": group,
+            "content": content,
             "tags": []
         ]
         
