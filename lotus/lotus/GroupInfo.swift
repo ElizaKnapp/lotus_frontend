@@ -87,7 +87,6 @@ struct GroupInfo: View {
         }.onAppear{
             // fetch the posts
             
-            // HOW DOES THIS ONLY WORK FOR ENDOMETRIOSIS?
             print(group_name)
             postNetworking.fetch_one(group: group_name)
             print("did this")

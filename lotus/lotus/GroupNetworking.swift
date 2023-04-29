@@ -16,10 +16,21 @@ struct Group: Hashable, Codable {
     let name: String
     let about: String
     let num_members: Int
-    let tags: [String]
+    let tags: [Tag1]
     let posts: [String]
     let time: String
 }
+
+struct Tag1: Hashable, Codable {
+    let id: Int?
+    let tag: String
+}
+
+struct Post1: Hashable, Codable {
+    let id: Int?
+    let title: String
+}
+
 
 
 class GroupNetworking: ObservableObject {

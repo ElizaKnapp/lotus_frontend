@@ -25,7 +25,9 @@ struct HomePage: View {
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
     @StateObject var userInfoNetworking = UserInfoNetworking()
-
+    
+    @State public var myGroups: [Group] = []
+    
     
     var body: some View {
         NavigationView {
@@ -158,12 +160,20 @@ struct HomePage: View {
                             }
                             
                             Text("Hi \(username)")
-                            Text("My Feed Page- below should be posts from the groups that you're in")
+                            Text("My Groups Page- below should be groups that you're in")
                             
                             List {
-                                ForEach(groups, id: \.self) {group in
+                                ForEach(myGroups, id: \.self) {group in
                                     HStack {
-                                        Text(group)
+                                        HStack {
+                                            VStack {
+                                                Text(group.name)
+                                                Text("Members: " + group.num_members.codingKey.stringValue)
+                                            }
+                                            NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: true, groups: groups)){
+                                                Text("Open Group")
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -202,6 +212,15 @@ struct HomePage: View {
                         }
                     }
                     print(groups)
+                    
+                    myGroups = []
+                    // here make the array of ones
+                    for group in groupNetworking.groups {
+                        if (groups.contains(group.name)) {
+                            myGroups.append(group)
+                        }
+                    }
+                    print(myGroups)
                 }
       
             }
