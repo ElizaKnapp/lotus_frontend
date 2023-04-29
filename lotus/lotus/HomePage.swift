@@ -25,8 +25,10 @@ struct HomePage: View {
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
     @StateObject var userInfoNetworking = UserInfoNetworking()
+    @StateObject var postNetworking = PostNetworking()
     
     @State public var myGroups: [Group] = []
+    @State public var myPosts: [Post] = []
     
     
     var body: some View {
@@ -132,9 +134,16 @@ struct HomePage: View {
                             Text("Still working on it!")
 
                             List {
-                                ForEach(groups, id: \.self) {group in
+                                ForEach(myPosts, id: \.self) {post in
+                                    // myPosts is an array of posts of the groups that you are in
                                     HStack {
-                                        Text(group)
+                                        HStack {
+                                            VStack {
+                                                Text(post.author)
+                                                Text(post.title)
+                                                Text(post.content)
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -221,6 +230,17 @@ struct HomePage: View {
                         }
                     }
                     print(myGroups)
+                    
+                    // finally, per item in groups, query posts
+                    myPosts = []
+                    for group in groups {
+                        postNetworking.fetch_one(group: group)
+                        for post in postNetworking.posts {
+                            myPosts.append(post)
+                        }
+                    }
+                    print(myPosts)
+                    
                 }
       
             }
