@@ -233,12 +233,13 @@ struct HomePage: View {
                     
                     // finally, per item in groups, query posts
                     myPosts = []
-                    for group in groups {
-                        postNetworking.fetch_one(group: group)
-                        for post in postNetworking.posts {
+                    postNetworking.fetch()
+                    for post in postNetworking.posts {
+                        if (groups.contains(post.group)) {
                             myPosts.append(post)
                         }
                     }
+                
                     print(myPosts)
                     
                 }
