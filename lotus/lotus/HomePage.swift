@@ -127,7 +127,8 @@ struct HomePage: View {
                             }
                             Text("Hi \(username)")
                             Text("My Feed Page- below should be posts from the groups that you're in")
-                            
+                            Text("Still working on it!")
+
                             List {
                                 ForEach(groups, id: \.self) {group in
                                     HStack {
@@ -159,7 +160,6 @@ struct HomePage: View {
                             Text("Hi \(username)")
                             Text("My Feed Page- below should be posts from the groups that you're in")
                             
-                            Text("Still working on it!")
                             List {
                                 ForEach(groups, id: \.self) {group in
                                     HStack {
