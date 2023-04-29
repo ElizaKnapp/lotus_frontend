@@ -87,6 +87,8 @@ struct GroupInfo: View {
         }.onAppear{
             // fetch the posts
             postNetworking.fetch_one(group: group_name)
+            print("did this")
+            print(postNetworking.posts)
             
             // check the groups
             for group in groups {

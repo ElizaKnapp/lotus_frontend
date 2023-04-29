@@ -50,6 +50,14 @@ class DBChecker: ObservableObject {
         return false
     }
     
+    func validPost(title: String, content: String) -> Bool {
+        // should this also make sure there aren't double titles?
+        
+        if (title != "" && content != "") {
+            return true
+        }
+        return false
+    }
     
     
 }

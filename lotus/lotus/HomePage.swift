@@ -17,7 +17,11 @@ struct HomePage: View {
     @State public var username: String = ""
     @State public var email: String = ""
     @State public var groups: [String] = []
-
+    
+    // which tab of the home page we're on
+    @State public var tab: Int = 0 // 0 1 or 2
+    
+    
     // for the groups shown
     @StateObject var groupNetworking = GroupNetworking()
     @StateObject var userInfoNetworking = UserInfoNetworking()
@@ -65,69 +69,106 @@ struct HomePage: View {
             } else {
                 
                 ZStack {
-                    Color("myPink").ignoresSafeArea()
+                    Color("lightPink").ignoresSafeArea()
                     VStack {
-                        HStack {
-                            Text("Groups")
-                                .padding()
-                                .font(.system(size: 20))
-                                .background(.white)
-                                .foregroundColor(.black)
-                            // eventually the two texts below will be the myfeed and mygroups buttons
-                            Text("My Feed")
-                                .padding()
-                                .font(.system(size: 20))
-                                .background(.white)
-                                .foregroundColor(.black)
-                            Text("My Groups")
-                                .padding()
-                                .font(.system(size: 20))
-                                .background(.white)
-                                .foregroundColor(.black)
-                        }
-                        Text("Hi \(username)")
-                        Text("My Groups Page")
-                        
-                        // THE BELOW LINK will be to edit profile (LATER)
-//                        NavigationLink(destination: CreateProfile(username: $username)){
-//                            Text("Profile")
-//                                .padding()
-//                                .font(.system(size: 40))
-//                                .background(.white)
-//                                .foregroundColor(.black)
-//                        }
-                        List {
-                            ForEach(groupNetworking.groups, id: \.self) {group in
-                                HStack {
-                                    VStack {
-                                        Text(group.name)
-                                        Text("Members: " + group.num_members.codingKey.stringValue)
-                                    }
-                                    // somehow also pass the array of the users groups or smth
-                                    // FIGURE OUT IF THE USER HAS JOINED THE GROUP AND PASS THAT IN
-                                    NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false, groups: groups)){
-                                        Text("More Info")
-                                    }
+                        if (tab == 0) {
+                            HStack {
+                                Text("Groups")
+                                    .padding().font(.system(size: 20)).background(Color("darkPink")).foregroundColor(.white)
+                                Button(action: {
+                                    tab = 1
+                                }) {
+                                    Text("My Feed")
+                                        .padding().font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
                                 }
-                                
-                                
-                            }
-                        }.onAppear{
-                            print(userInfoNetworking.userInfos)
-                            // query the db for list of groups
-                            userInfoNetworking.fetch_one(username: username)
-                            
-                            // BUG- THIS DOESN'T LOAD FAST ENOUGH??
-                            groups = []
-                            if (userInfoNetworking.userInfos != []) {
-                                for item in userInfoNetworking.userInfos[0].groups {
-                                    groups.append(item.name)
+                                Button(action: {
+                                    tab = 2
+                                }) {
+                                    Text("My Groups")
+                                        .padding() .font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
                                 }
                             }
+                            Text("Hi \(username)")
+                            Text("My Groups Page")
                             
-                            print(groups)
+                            List {
+                                ForEach(groupNetworking.groups, id: \.self) {group in
+                                    HStack {
+                                        VStack {
+                                            Text(group.name)
+                                            Text("Members: " + group.num_members.codingKey.stringValue)
+                                        }
+                                        NavigationLink(destination: GroupInfo(username: username, group_name: group.name, info: group.about, num_members: group.num_members, joined: false, groups: groups)){
+                                            Text("More Info")
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                    
                         }
-
+                        else if (tab == 1) {
+                            HStack {
+                                Button(action: {
+                                    tab = 0
+                                }) {
+                                    Text("Groups")
+                                        .padding().font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
+                                }
+                                Text("My Feed")
+                                    .padding().font(.system(size: 20)).background(Color("darkPink")).foregroundColor(.white)
+                                
+                                Button(action: {
+                                    tab = 2
+                                }) {
+                                    Text("My Groups")
+                                        .padding() .font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
+                                }
+                            }
+                            Text("Hi \(username)")
+                            Text("My Feed Page- below should be posts from the groups that you're in")
+                            
+                            List {
+                                ForEach(groups, id: \.self) {group in
+                                    HStack {
+                                        Text(group)
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            HStack {
+                                Button(action: {
+                                    tab = 0
+                                }) {
+                                    Text("Groups")
+                                        .padding().font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
+                                }
+                                Button(action: {
+                                    tab = 1
+                                }) {
+                                    Text("My Feed")
+                                        .padding() .font(.system(size: 20)).background(Color("myPink")).foregroundColor(.white)
+                                }
+                                Text("My Groups")
+                                    .padding().font(.system(size: 20)).background(Color("darkPink")).foregroundColor(.white)
+                                
+                               
+                            }
+                            
+                            Text("Hi \(username)")
+                            Text("My Feed Page- below should be posts from the groups that you're in")
+                            
+                            Text("Still working on it!")
+                            List {
+                                ForEach(groups, id: \.self) {group in
+                                    HStack {
+                                        Text(group)
+                                    }
+                                }
+                            }
+                            
+                        }
                         Button(action: {
                             logged_in = false
                             username = ""
@@ -141,14 +182,30 @@ struct HomePage: View {
                                 .foregroundColor(.black)
                         }
                     }
+                        
+                    
+                
                 }.onAppear{
+                    // fetch the groups and also the groups that the person is a part of
+                    
                     groupNetworking.fetch()
+                    
+                    print(userInfoNetworking.userInfos)
+                    // query the db for list of groups
+                    userInfoNetworking.fetch_one(username: username)
+                    
+                    // BUG- THIS DOESN'T LOAD FAST ENOUGH??
+                    groups = []
+                    if (userInfoNetworking.userInfos != []) {
+                        for item in userInfoNetworking.userInfos[0].groups {
+                            groups.append(item.name)
+                        }
+                    }
+                    print(groups)
                 }
-                
-                
+      
             }
         }
-        
 
     }
 }
