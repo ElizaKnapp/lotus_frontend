@@ -35,35 +35,57 @@ struct Post1: Hashable, Codable {
 
 class GroupNetworking: ObservableObject {
     @Published var groups: [Group] = [] // view will update itself
+    @Published var finish_fetching: Bool = false
+    @Published var loaded_groups: Bool = false
     
-    func fetch() {
+//    func fetch() {
+//        guard let url = URL(string: "http://localhost:5000/group") else {
+//            return
+//        }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//
+//        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
+//            error in
+//            guard let data = data, error == nil else {
+//                return
+//            }
+//
+//            // Convert to JSON
+//            do {
+//                let groups = try JSONDecoder().decode([Group].self, from: data)
+//                DispatchQueue.main.async {
+//                    self?.groups = groups
+//                    self?.loaded_groups = true
+//                }
+//            }
+//            catch {
+//                print(error)
+//            }
+//
+//        }
+//        task.resume()
+//    }
+    
+    func fetch() async throws {
         guard let url = URL(string: "http://localhost:5000/group") else {
-            return
+            throw URLError(.badURL)
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+
+        // Now use URLSession.data(for:) which is an async function
+        let (data, _) = try await URLSession.shared.data(for: request)
         
-        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
-            error in
-            guard let data = data, error == nil else {
-                return
-            }
-            
-            // Convert to JSON
-            do {
-                let groups = try JSONDecoder().decode([Group].self, from: data)
-                DispatchQueue.main.async {
-                    self?.groups = groups
-                }
-            }
-            catch {
-                print(error)
-            }
-            
-        }
-        task.resume()
+        // Decode JSON
+        let groups = try JSONDecoder().decode([Group].self, from: data)
+        // No need to dispatch to main queue, UI updates with async/await happen on main queue by default
+        self.groups = groups
+        // self.loaded_groups = true
     }
+    
     
     func fetch_one(name: String) {
         let url_string = "http://localhost:5000/group/byName/" + name

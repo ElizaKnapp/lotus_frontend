@@ -31,33 +31,23 @@ struct Tag: Hashable, Codable {
 class PostNetworking: ObservableObject {
     @Published var posts: [Post] = [] // view will update itself
     
-    func fetch() {
-        guard let url = URL(string: "http://localhost:5000/post") else {
-            return
-        }
+    func fetch() async {
+        guard let url = URL(string: "http://localhost:5000/post") else { return }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
-            error in
-            guard let data = data, error == nil else {
-                return
-            }
+        do {
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
             
-            // Convert to JSON
-            do {
-                let posts = try JSONDecoder().decode([Post].self, from: data)
-                DispatchQueue.main.async {
-                    self?.posts = posts
-                }
-            }
-            catch {
-                print(error)
-            }
+            let (data, _) = try await URLSession.shared.data(for: request)
             
+            let posts = try JSONDecoder().decode([Post].self, from: data)
+            
+            DispatchQueue.main.async {
+                self.posts = posts
+            }
+        } catch {
+            print(error)
         }
-        task.resume()
     }
     
     func fetch_one(group: String) {

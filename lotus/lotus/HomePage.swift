@@ -29,7 +29,7 @@ struct HomePage: View {
     
     @State public var myGroups: [Group] = []
     @State public var myPosts: [Post] = []
-    
+        
     
     var body: some View {
         NavigationView {
@@ -94,7 +94,6 @@ struct HomePage: View {
                             }
                             Text("Hi \(username)")
                             Text("My Groups Page")
-                            
                             List {
                                 ForEach(groupNetworking.groups, id: \.self) {group in
                                     HStack {
@@ -109,6 +108,7 @@ struct HomePage: View {
                                     
                                 }
                             }
+                            
                     
                         }
                         else if (tab == 1) {
@@ -187,6 +187,7 @@ struct HomePage: View {
                                 }
                             }
                             
+                            
                         }
                         Button(action: {
                             logged_in = false
@@ -200,6 +201,12 @@ struct HomePage: View {
                                 .background(.white)
                                 .foregroundColor(.black)
                         }
+                        
+                        if (groupNetworking.loaded_groups) {
+                            Text("Loaded Groups").onAppear{
+                                
+                            }
+                        }
                     }
                         
                     
@@ -207,40 +214,51 @@ struct HomePage: View {
                 }.onAppear{
                     // fetch the groups and also the groups that the person is a part of
                     
-                    groupNetworking.fetch()
+                    // flag MAKE SURE IT ONLY RUNS ONCE
+                    Task {
+                        try await groupNetworking.fetch()
+                        await userInfoNetworking.fetch_one(username: username)
+                        await postNetworking.fetch()
+
+                        groups = []
+                        if (userInfoNetworking.userInfos != []) {
+                            for item in userInfoNetworking.userInfos[0].groups {
+                                groups.append(item.name)
+                            }
+                        }
+                        
+                        myGroups = []
+                        // here make the array of ones
+                        for group in groupNetworking.groups {
+                            if (groups.contains(group.name)) {
+                                myGroups.append(group)
+                            }
+                        }
+                        
+                        myPosts = []
+                        for post in postNetworking.posts {
+                            if (groups.contains(post.group)) {
+                                myPosts.append(post)
+                            }
+                        }
+                        
+                    }
+
                     
-                    print(userInfoNetworking.userInfos)
+                    
+                    // print(userInfoNetworking.userInfos)
                     // query the db for list of groups
-                    userInfoNetworking.fetch_one(username: username)
-                    
-                    // BUG- THIS DOESN'T LOAD FAST ENOUGH??
-                    groups = []
-                    if (userInfoNetworking.userInfos != []) {
-                        for item in userInfoNetworking.userInfos[0].groups {
-                            groups.append(item.name)
-                        }
-                    }
-                    print(groups)
-                    
-                    myGroups = []
-                    // here make the array of ones
-                    for group in groupNetworking.groups {
-                        if (groups.contains(group.name)) {
-                            myGroups.append(group)
-                        }
-                    }
-                    print(myGroups)
+                                      
+                    // print(groups)
+                
+                    // print(myGroups)
                     
                     // finally, per item in groups, query posts
-                    myPosts = []
-                    postNetworking.fetch()
-                    for post in postNetworking.posts {
-                        if (groups.contains(post.group)) {
-                            myPosts.append(post)
-                        }
-                    }
+
+                    
+                    // groupNetworking.finish_fetching = true
                 
-                    print(myPosts)
+                    // print(myPosts)
                     
                 }
       

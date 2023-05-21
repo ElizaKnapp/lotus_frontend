@@ -62,7 +62,7 @@ class UserInfoNetworking: ObservableObject {
         task.resume()
     }
     
-    func fetch_one(username: String) {
+    func fetch_one(username: String) async {
         let url_string = "http://localhost:5000/userInfo/byUsername/" + username
         
         guard let url = URL(string: url_string) else {
@@ -72,26 +72,19 @@ class UserInfoNetworking: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let task = URLSession.shared.dataTask(with: request) { [weak self]data, _,
-            error in
-            guard let data = data, error == nil else {
-                return
-            }
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
             
-            // Convert to JSON
-            do {
-                let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
-                DispatchQueue.main.async {
-                    self?.userInfos = userInfos
-                }
-            }
-            catch {
-                print(error)
-            }
+            let userInfos = try JSONDecoder().decode([UserInfo].self, from: data)
             
+            DispatchQueue.main.async {
+                self.userInfos = userInfos
+            }
+        } catch {
+            print(error)
         }
-        task.resume()
     }
+
     
     func post(username: String, first_name: String, last_name: String, birthday: String, gender: String, profile_visibility: String) {
         guard let url = URL(string: "http://localhost:5000/userInfo") else {
